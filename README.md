@@ -1,2 +1,7 @@
 # vim-setup-python
-vim setup
+
+Instruction:
+
+https://www.youtube.com/watch?v=HKJUILUvkGk
+
+NB colorschemes...
