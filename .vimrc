@@ -12,6 +12,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'dense-analysis/ale'
 Plugin 'nvie/vim-flake8'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'sainnhe/everforest'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -31,8 +34,6 @@ syntax on
 
 set t_Co=256
 
-colorscheme atom-dark-256
-
 set foldmethod=indent
 
 set foldlevel=99
@@ -44,7 +45,7 @@ au BufNewFile, BufRead *.py
     \ set softtabstop=4
     \ set shiftwidth=4
     \ set expandtab=4
-    \ set textwidth=4
+    \ set textwidth=79
     \ set expandtab
     \ set autoindent
     \ set fileformat=unix
@@ -53,7 +54,7 @@ let g:ale_linters = {'python': ['flake8']}
 
 set number
 
-set encoding=utf8
+set encoding=utf-8
 
 set cursorline
 
@@ -65,3 +66,24 @@ autocmd FileType python setlocal completeopt-=preview
 
 let mapleader=","
 
+"Color settings:
+
+        " Important!!
+        if has('termguicolors')
+          set termguicolors
+        endif
+        " For dark version.
+        set background=dark
+        " Set contrast.
+        " This configuration option should be placed before `colorscheme everforest`.
+        " Available values: 'hard', 'medium'(default), 'soft'
+        let g:everforest_background = 'hard'
+        " For better performance
+        let g:everforest_better_performance = 1
+	colorscheme everforest
+
+"NERDTree settings
+autocmd VimEnter * NERDTree | wincmd p
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
