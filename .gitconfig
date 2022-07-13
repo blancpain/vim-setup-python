@@ -1,7 +1,0 @@
-[user]
-	name = blancpain
-	email = y_dimitrov@ymail.com
-[core]
-	editor = vim --wait
-[color]
-	ui = true
