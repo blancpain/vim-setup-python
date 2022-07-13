@@ -11,7 +11,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'dense-analysis/ale'
 Plugin 'nvie/vim-flake8'
-
+Plugin 'davidhalter/jedi-vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -50,4 +50,18 @@ au BufNewFile, BufRead *.py
     \ set fileformat=unix
 
 let g:ale_linters = {'python': ['flake8']}
+
 set number
+
+set encoding=utf8
+
+set cursorline
+
+set title
+
+set wildmenu
+
+autocmd FileType python setlocal completeopt-=preview
+
+let mapleader=","
+
